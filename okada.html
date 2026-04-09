@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>どっちがお〜かだ</title>
+<style>
+body{font-family:sans-serif;text-align:center;background:#111;color:#fff}
+img{width:300px;height:300px;object-fit:cover;margin:20px}
+button{font-size:20px;margin:10px;padding:10px 20px}
+</style>
+</head>
+<body>
+<h1>どっちがお〜かだ</h1>
+<h2 id="score">Score:0</h2>
+<img id="photo" src="">
+<br>
+<button onclick="answer(true)">お〜かだ！</button>
+<button onclick="answer(false)">ちがう！</button>
+<script>
+const images=[
+ {src:"img1.jpg", ok:false},
+ {src:"img2.jpg", ok:false},
+ {src:"img3.jpg", ok:true}
+]
+let current,score=0;
+function next(){
+ current=images[Math.floor(Math.random()*images.length)];
+ document.getElementById("photo").src=current.src;
+}
+next();
+function answer(btn){
+ if(btn===current.ok){ score++; alert("正解！"); }
+ else{ alert("不正解！"); }
+ document.getElementById("score").innerText="Score:"+score;
+ next();
+}
+</script>
+</body>
+</html>
